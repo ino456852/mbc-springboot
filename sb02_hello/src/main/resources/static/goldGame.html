@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gold Game - 보물찾기</title>
+    <style>
+        table { border-collapse: collapse; }
+        td { padding: 0; }
+        form { display: inline; margin: 0; }
+        button {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>💰 Gold Game - 보물찾기</h1>
+    <div id="result"><strong>결과가 여기 표시됩니다</strong></div>
+    <br>
+
+    <table>
+        <tbody>
+            <!-- 10x10 버튼 -->
+        </tbody>
+    </table>
+
+    <script>
+        const tbody = document.querySelector("tbody");
+
+        for (let y = 0; y < 10; y++) {
+            const row = document.createElement("tr");
+            for (let x = 0; x < 10; x++) {
+                const cell = document.createElement("td");
+
+                const form = document.createElement("form");
+                form.method = "GET";
+                form.action = "/treasure";
+                form.onsubmit = (e) => {
+                    e.preventDefault();
+                    const url = `/treasure?x=${x}&y=${y}`;
+                    fetch(url)
+                        .then(res => res.text())
+                        .then(text => {
+                            document.getElementById("result").innerText = text;
+                        });
+                };
+
+                const button = document.createElement("button");
+                button.type = "submit";
+                button.textContent = `${x},${y}`;
+
+                form.appendChild(button);
+                cell.appendChild(form);
+                row.appendChild(cell);
+            }
+            tbody.appendChild(row);
+        }
+    </script>
+</body>
+</html>
