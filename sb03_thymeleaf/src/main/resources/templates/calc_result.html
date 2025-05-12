@@ -2,9 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>간단 계산기</title>
+<title>간단계산기 결과</title>
 </head>
 <body>
-	<h1>[[${result}]]</h1>
+	<h1>간단계산기 결과</h1>
+	<form action="/calc">
+		<input type="number" name="n1" th:value="${n1}">
+		<select name="opr" th:value="${opr}">
+			<option th:selected="${opr}=='+'">+</option>
+			<option th:selected="${opr}=='-'">-</option>
+			<option th:selected="${opr}=='*'">*</option>
+			<option th:selected="${opr}=='/'">/</option>
+			<option th:selected="${opr}=='%'">%</option>
+		</select>
+		<input type="number" name="n2" th:value="${n2}">
+		<input type="submit" value="계산하기">
+	</form>
 </body>
 </html>

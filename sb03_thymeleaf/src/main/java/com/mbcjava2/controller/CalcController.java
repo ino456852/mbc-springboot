@@ -36,6 +36,9 @@ public class CalcController {
 		default:
 			result = "미지원 연산자입니다";
 		}
+		model.addAttribute("n1", n1);
+		model.addAttribute("n2", n2);
+		model.addAttribute("opr", opr);
 		model.addAttribute("result", result);
 		return "calc_result";
 	}
