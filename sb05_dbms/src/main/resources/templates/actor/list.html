@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시물 목록</title>
+</head>
+<body>
+	<h1>게시물 목록</h1>
+	<p>게시물 갯수 : [[${actor_list.size()}]]</p>
+	<table>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>이름</th>
+				<th>성별</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="actor : ${actor_list}">
+				<td>[[${actor.actorId}]]</td>
+				<td>[[${actor.name}]]</td>
+				<td>[[${actor.gender}]]</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
